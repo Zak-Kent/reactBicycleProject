@@ -5,53 +5,26 @@ import React from 'react';
 function httpRecurse(url, output = []) {
   // makes recursive api call to deal with paginated data on endpoint 
 
-  return new Promise((resolve, reject) => {
-      let outputObj = output; 
+  let outputObj = output; 
 
-      fetch(url, {
-        method: 'get'
-      })
-        .then((res) => {
-          // need to pass data stream from fetch through JSON() to get correct format 
-          return res.json()
-        })
-          .then((jsonObj) => {
-            outputObj.push(...jsonObj.results);
-
-            if (jsonObj.next !== null) {
-              httpRecurse(jsonObj.next, outputObj)
-            } else {
-              return;
-            }
-          })
-      resolve(output); 
+  fetch(url, {
+    method: 'get'
+  })
+    .then((res) => {
+      // need to pass data stream from fetch through JSON() to get correct format 
+      return res.json()
     })
-  }
+      .then((jsonObj) => {
+        outputObj.push(...jsonObj.results);
 
-
-
-
-
-//   let outputObj = output; 
-
-//   fetch(url, {
-//     method: 'get'
-//   })
-//     .then((res) => {
-//       // need to pass data stream from fetch through JSON() to get correct format 
-//       return res.json()
-//     })
-//       .then((jsonObj) => {
-//         outputObj.push(...jsonObj.results);
-
-//         if (jsonObj.next !== null) {
-//           httpRecurse(jsonObj.next, outputObj)
-//         } else {
-//           return;
-//         }
-//       })
-//   return output; 
-// }
+        if (jsonObj.next !== null) {
+          httpRecurse(jsonObj.next, outputObj)
+        } else {
+          return;
+        }
+      })
+  return outputObj; 
+}
 
 // simple button that triggers api call 
 function HttpButton(props) {

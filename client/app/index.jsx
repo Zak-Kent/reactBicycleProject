@@ -16,32 +16,42 @@ class App extends React.Component {
         lat: 45.521, 
         lng: -122.673
       },
-      bikeRacks: [],
-      markers: {
-        racks: [
-          {
-            location: {
-              lat: 45.521, 
-              lng: -122.673
-            }, 
-            id: 55
-          }
-        ]
-      }
+      bikeRacks: [
+        {
+            "id": 605,
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    -122.67870784036258,
+                    45.51479513525199,
+                    0.0
+                ]
+            },
+            "theft_prob_per_bike_day_x_1000": "0.26570381"
+        },
+        {
+            "id": 921,
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    -122.67852660605533,
+                    45.51511959277659,
+                    0.0
+                ]
+            },
+            "theft_prob_per_bike_day_x_1000": "0.68703283"
+        }
+      ]
     }
   }
 
   apiCall () {
+    // need to find a better way to manage state when making recursive api calls, probably redux
 
     let url =  'https://totalgood.org/bicycle/?dist=150&format=json&point=-122.678713,45.514798'
-    httpRecurse(url)
-    .then((data) => {
-      this.setState({
-        bikeRacks: data
-      })
-    })
+    let finalArray = httpRecurse(url)
 
-    console.log("inside app component value of final array", this.state.bikeRacks);
+    console.log("inside app component value of final array", finalArray);
 
   }
 

@@ -9,7 +9,8 @@ class Map extends Component {
     const mapContainer = <div style={{height:'100%', width:'100%'}}></div>
 
 
-    console.log("inside Map Component looking for props", this.props.markers)
+    console.log("inside Map Component looking for props", this.props)
+
     const markers = this.props.markers.map((rack, idx) => {
 
       const marker = {
@@ -19,10 +20,10 @@ class Map extends Component {
         }
       }
 
+      console.log(marker)
+
       return <Marker key={rack.id} {...marker} /> 
     })
-
-    console.log(markers)
 
     return (
       <GoogleMapLoader
