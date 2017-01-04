@@ -1,49 +1,20 @@
 "use strict";
 
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
+
+import { Provider, connect } from "react-redux";
+import { store } from "./store.js";
 
 import { httpRecurse, HttpButton } from './apiCallStuff.jsx';
 import Map from './gMapStuff.jsx';
 
-
-class App extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      center: {
-        lat: 45.521, 
-        lng: -122.673
-      },
-      bikeRacks: [
-        {
-            "id": 605,
-            "geom": {
-                "type": "Point",
-                "coordinates": [
-                    -122.67870784036258,
-                    45.51479513525199,
-                    0.0
-                ]
-            },
-            "theft_prob_per_bike_day_x_1000": "0.26570381"
-        },
-        {
-            "id": 921,
-            "geom": {
-                "type": "Point",
-                "coordinates": [
-                    -122.67852660605533,
-                    45.51511959277659,
-                    0.0
-                ]
-            },
-            "theft_prob_per_bike_day_x_1000": "0.68703283"
-        }
-      ]
-    }
+@connect((store) => {
+  return {
+    store: store
   }
+})
+class App extends React.Component {
 
   apiCall () {
     // need to find a better way to manage state when making recursive api calls, probably redux
@@ -57,14 +28,16 @@ class App extends React.Component {
 
   render () {
 
-    console.log("value of state inside app render", this.state)
+    // console.log("value of state inside app render", this.state)
+
+    console.log("value of redux store inside app render", this.props)
 
 
     return ( 
       <div>
         <p>Hello from React!</p>
         <div style={{width:"500px", height:"500px", background:"red"}}>
-          <Map center={this.state.center} markers={this.state.bikeRacks}/>
+          <Map center={this.props.store.center} markers={this.props.store.bikeRacks}/>
         </div>
         <HttpButton onClick={() => this.apiCall()} />
       </div>
@@ -73,4 +46,8 @@ class App extends React.Component {
 }
 
 
-render(<App/>, document.getElementById('app'));
+const app = document.getElementById('app');
+
+render(<Provider store={store}>
+  <App/>
+  </Provider>, app);
