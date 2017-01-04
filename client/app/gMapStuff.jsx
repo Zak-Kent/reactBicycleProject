@@ -9,13 +9,13 @@ class Map extends Component {
     const mapContainer = <div style={{height:'100%', width:'100%'}}></div>
 
 
-    console.log(this.props.markers)
+    console.log("inside Map Component looking for props", this.props.markers)
     const markers = this.props.markers.map((rack, idx) => {
 
       const marker = {
         position: {
-          lat: rack.location.lat, 
-          lng: rack.location.lng
+          lat: rack.geom.coordinates[1], 
+          lng: rack.geom.coordinates[0]
         }
       }
 
