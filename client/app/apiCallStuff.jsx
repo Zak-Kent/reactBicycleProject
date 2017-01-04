@@ -7,8 +7,6 @@ function httpRecurse(url, output = []) {
 
   let outputObj = output; 
 
-  console.log('output current', outputObj);
-
   fetch(url, {
     method: 'get'
   })
@@ -25,7 +23,7 @@ function httpRecurse(url, output = []) {
           return;
         }
       })
-  return output; 
+  return outputObj; 
 }
 
 // simple button that triggers api call 

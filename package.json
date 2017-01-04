@@ -8,7 +8,6 @@
     "dev": "npm run watch & webpack-dev-server --content-base ./client/public/",
     "build": "webpack -p",
     "watch": "webpack -p --watch"
-    
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +18,7 @@
     "babel-preset-react": "^6.16.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
+    "react-google-maps": "^4.11.0",
     "webpack": "^1.14.0"
   },
   "devDependencies": {
