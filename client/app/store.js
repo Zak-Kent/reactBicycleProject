@@ -1,7 +1,9 @@
 "use strict";
 
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 
+import promise from "redux-promise-middleware";
+import logger from "redux-logger";
 
 const initialState = {
       center: {
@@ -36,11 +38,41 @@ const initialState = {
       ]
     }
 
+const newState = {
+      center: {
+        lat: 45.521, 
+        lng: -122.673
+      },
+      bikeRacks: [
+        {
+            "id": 555,
+            "geom": {
+                "type": "Point",
+                "coordinates": [
+                    -122.67870784036258,
+                    45.51479513525199,
+                    0.0
+                ]
+            },
+            "theft_prob_per_bike_day_x_1000": "0.26570381"
+        }
+      ]
+    }
+
 const reducer = (state=initialState, action) => {
-	return state;
+  
+  switch (action.type) {
+    case "CHANGE_STORE": {
+
+      console.log('inside switch statement')
+
+      return {...state, bikeRacks: action.payload}
+    }
+  }
+  
+  return state;
 }
 
-const store = createStore(reducer);
+const middleware = applyMiddleware(promise(), logger())
 
-
-export { store };
+export default createStore(reducer, middleware)

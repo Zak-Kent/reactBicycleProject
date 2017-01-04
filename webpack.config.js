@@ -18,7 +18,7 @@ var config = {
         include: APP_DIR, 
         loader: 'babel',
         query: {
-          plugins: ['transform-decorators-legacy']
+          plugins: ['transform-decorators-legacy', 'transform-object-rest-spread']
         }
       }
     ]

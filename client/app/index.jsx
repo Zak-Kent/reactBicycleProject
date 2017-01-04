@@ -1,17 +1,21 @@
 "use strict";
 
-import React from 'react';
-import { render } from 'react-dom';
+import React from "react";
+import { render } from "react-dom";
 
 import { Provider, connect } from "react-redux";
-import { store } from "./store.js";
+import store from "./store.js";
 
-import { httpRecurse, HttpButton } from './apiCallStuff.jsx';
-import Map from './gMapStuff.jsx';
+import { httpRecurse, HttpButton } from "./apiCallStuff.jsx";
+import Map from "./gMapStuff.jsx";
 
+import { testAction } from "./actions/firstActions.js";
+
+// used by redux to connect store to a component 
 @connect((store) => {
   return {
-    store: store
+    center: store.center,
+    bikeRacks: store.bikeRacks
   }
 })
 class App extends React.Component {
@@ -23,23 +27,23 @@ class App extends React.Component {
     let finalArray = httpRecurse(url)
 
     console.log("inside app component value of final array", finalArray);
-
   }
+
+  testAction() {
+    this.props.dispatch(testAction())
+  } 
 
   render () {
 
-    // console.log("value of state inside app render", this.state)
-
     console.log("value of redux store inside app render", this.props)
-
 
     return ( 
       <div>
         <p>Hello from React!</p>
         <div style={{width:"500px", height:"500px", background:"red"}}>
-          <Map center={this.props.store.center} markers={this.props.store.bikeRacks}/>
+          <Map center={this.props.center} markers={this.props.bikeRacks}/>
+          <HttpButton onClick={() => this.testAction()} />
         </div>
-        <HttpButton onClick={() => this.apiCall()} />
       </div>
     );
   }
