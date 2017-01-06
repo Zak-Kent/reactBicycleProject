@@ -15,7 +15,6 @@ export function racksApiCall(url) {
               dispatch({type: "RECEIVE_RACKS", payload: jsonRes.results})
             })
             .catch((err) => {
-              console.log("error in fetch")
               dispatch(type: "FETCH_RACKS_ERROR", payload: err)
             })
   }
