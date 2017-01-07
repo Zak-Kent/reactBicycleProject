@@ -7,12 +7,14 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 
 const initialState = {
-      center: {
+      userCenter: {
         lat: 45.521, 
         lng: -122.673
       },
       bikeRacks: [],
-      mapMoved: false
+      mapMoved: false,
+      movedCenter: {},
+      gMapObj: null
     }
 
 const reducer = (state=initialState, action) => {
@@ -22,7 +24,10 @@ const reducer = (state=initialState, action) => {
       return {...state, bikeRacks: action.payload}
     }
     case "GET_USER_LOCATION": {
-      return {...state, center: action.payload.center}
+      return {...state, userCenter: action.payload.center}
+    }
+    case "CHANGE_MAP_CENTER": {
+      return {...state, gMapObj: action.payload.gMapObj, mapMoved: true}
     }
   }
   
