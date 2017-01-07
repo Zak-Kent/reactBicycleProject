@@ -16,36 +16,29 @@ export function userCenterAction() {
         }
       }) 
     })
-
   }
-
 }
 
-export function getMapCenter() {
-  let center = navigator.geolocation.getCurrentPosition((pos) => {
-    const coords = pos.coords;
-
-    return coords;
-  })
+export function getMapRef(mapRef) {
+  return {
+    type: "GET_MAP_REF", 
+    payload: mapRef
+  }
 }
 
-export function mapDragAction(gMapObj) {
 
-
-  // this is only grabbing the center at the users location not the new center of the map 
-  // that's why the map keeps recentering. need to find a way to grad the center of the map object. 
-
+export function mapDragAction(coords) {
 
   return function(dispatch) {
-    console.log("inside map drag event")
 
     dispatch({ 
       type: "CHANGE_MAP_CENTER",
       payload: {
-        gMapObj: gMapObj
+        center: {
+          lat: coords.lat,
+          lng: coords.lng
+        }
       }
     }) 
-
-
   }
 }

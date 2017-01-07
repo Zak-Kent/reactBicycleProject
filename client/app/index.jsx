@@ -18,7 +18,8 @@ import { userCenterAction, getMapCenter, mapDragAction } from "./actions/mapActi
     center: store.userCenter,
     bikeRacks: store.bikeRacks,
     mapMoved: store.mapMoved,
-    movedCenter: store.movedCenter
+    movedCenter: store.movedCenter,
+    gmap: store.gMapObj
   }
 })
 class App extends React.Component {
@@ -47,8 +48,11 @@ class App extends React.Component {
   } 
 
   dragEnd() {
-    console.log("map moved!!!")
-    // this.props.dispatch(mapDragAction())
+    let lat = this.props.gmap.getCenter().lat();
+    let lng = this.props.gmap.getCenter().lng();
+
+    let newCoords = {lat, lng}
+    this.props.dispatch(mapDragAction(newCoords))
   }
 
   render () {

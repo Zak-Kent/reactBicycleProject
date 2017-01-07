@@ -27,7 +27,10 @@ const reducer = (state=initialState, action) => {
       return {...state, userCenter: action.payload.center}
     }
     case "CHANGE_MAP_CENTER": {
-      return {...state, gMapObj: action.payload.gMapObj, mapMoved: true}
+      return {...state, userCenter: action.payload.center, mapMoved: true}
+    }
+    case "GET_MAP_REF": {
+      return {...state, gMapObj: action.payload}
     }
   }
   
