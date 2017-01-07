@@ -11,7 +11,8 @@ const initialState = {
         lat: 45.521, 
         lng: -122.673
       },
-      bikeRacks: []
+      bikeRacks: [],
+      mapMoved: false
     }
 
 const reducer = (state=initialState, action) => {
@@ -19,6 +20,9 @@ const reducer = (state=initialState, action) => {
   switch (action.type) {
     case "RECEIVE_RACKS": {
       return {...state, bikeRacks: action.payload}
+    }
+    case "GET_USER_LOCATION": {
+      return {...state, center: action.payload.center}
     }
   }
   

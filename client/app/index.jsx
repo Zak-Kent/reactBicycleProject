@@ -9,16 +9,27 @@ import store from "./store.js";
 import { HttpButton } from "./apiCallStuff.jsx";
 import Map from "./gMapStuff.jsx";
 
-import { racksApiCall } from "./actions/apiActions.js"
+import { racksApiCall } from "./actions/apiActions.js";
+import { userCenterAction } from "./actions/mapActions.js";
 
 // used by redux to connect store to a component 
 @connect((store) => {
   return {
     center: store.center,
-    bikeRacks: store.bikeRacks
+    bikeRacks: store.bikeRacks,
+    mapMoved: store.mapMoved
   }
 })
 class App extends React.Component {
+
+  componentWillMount() {
+    console.log("componentWillMount")
+    if(navigator.geolocation) {
+      // action gets user location from navigator and updates store 
+      this.props.dispatch(userCenterAction())
+    }
+
+  }
 
   apiAction() {
     let url =  'https://totalgood.org/bicycle/?dist=150&format=json&point=-122.678713,45.514798'
@@ -26,7 +37,6 @@ class App extends React.Component {
   } 
 
   render () {
-
     // console.log("value of redux store inside app render", this.props)
 
     return ( 
