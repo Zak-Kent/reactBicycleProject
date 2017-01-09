@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "babel-node ./node_modules/.bin/isparta cover _mocha",
     "dev": "npm run watch & webpack-dev-server --content-base ./client/public/",
     "build": "webpack -p",
     "watch": "webpack -p --watch"
@@ -29,7 +29,12 @@
     "webpack": "^1.14.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "chai": "^3.5.0",
     "check-dependencies": "^1.0.1",
+    "isparta": "^4.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
     "webpack-dev-server": "^1.16.2"
   }
 }
