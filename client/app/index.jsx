@@ -6,8 +6,8 @@ import { render } from "react-dom";
 import { Provider, connect } from "react-redux";
 import store from "./store.js";
 
-import { HttpButton } from "./apiCallStuff.jsx";
-import Map from "./gMapStuff.jsx";
+import { HttpButton } from "./components/buttons.jsx";
+import Map from "./components/gMap.jsx";
 
 import { racksApiCall } from "./actions/apiActions.js";
 import { userCenterAction, getMapCenter, mapDragAction } from "./actions/mapActions.js";

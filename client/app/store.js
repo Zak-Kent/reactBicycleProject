@@ -1,6 +1,7 @@
 "use strict";
 
 import { applyMiddleware, createStore } from "redux";
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import promise from "redux-promise-middleware";
 import thunk from "redux-thunk";
@@ -39,4 +40,4 @@ const reducer = (state=initialState, action) => {
 
 const middleware = applyMiddleware(thunk, logger())
 
-export default createStore(reducer, middleware)
+export default createStore(reducer, composeWithDevTools(middleware));
