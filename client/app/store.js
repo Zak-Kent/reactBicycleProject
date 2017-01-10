@@ -1,6 +1,7 @@
 "use strict";
 
 import { applyMiddleware, createStore } from "redux";
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import promise from "redux-promise-middleware";
 import thunk from "redux-thunk";
@@ -17,7 +18,7 @@ const initialState = {
       gMapObj: null
     }
 
-const reducer = (state=initialState, action) => {
+export const reducer = (state=initialState, action) => {
   
   switch (action.type) {
     case "RECEIVE_RACKS": {
@@ -39,4 +40,4 @@ const reducer = (state=initialState, action) => {
 
 const middleware = applyMiddleware(thunk, logger())
 
-export default createStore(reducer, middleware)
+export default createStore(reducer, composeWithDevTools(middleware));

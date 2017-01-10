@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
 
-import { getMapRef } from './actions/mapActions.js';
-import store from "./store.js";
+import { getMapRef } from '../actions/mapActions.js';
+import store from "../store.js";
 
 @connect((store) => {
   return {
