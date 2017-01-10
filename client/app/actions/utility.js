@@ -47,21 +47,21 @@ export function sortRacks(rackArray) {
 
 // ************************** need to add location check functionality to app with a update in the store 
 
-  this.locationCheck = function(lat, lng) {
-    // min/max values found using valid data points from DB 
-    var xMin = 122.472241;
-    var xMax = 122.835418;
-    var yMin = 45.431566;
-    var yMax = 45.637628;
+  // this.locationCheck = function(lat, lng) {
+  //   // min/max values found using valid data points from DB 
+  //   var xMin = 122.472241;
+  //   var xMax = 122.835418;
+  //   var yMin = 45.431566;
+  //   var yMax = 45.637628;
 
-    var posLon = lng * -1;
+  //   var posLon = lng * -1;
 
-    // check to see if point is inside user area 
-    if (xMax >= posLon && posLon >= xMin && yMax >= lat && lat >= yMin){
-      console.log('inisde the square');
-      return true; 
-    } else {
-      console.log('outside the square');
-      return false;    
-    }
-  };
+  //   // check to see if point is inside user area 
+  //   if (xMax >= posLon && posLon >= xMin && yMax >= lat && lat >= yMin){
+  //     console.log('inisde the square');
+  //     return true; 
+  //   } else {
+  //     console.log('outside the square');
+  //     return false;    
+  //   }
+  // };

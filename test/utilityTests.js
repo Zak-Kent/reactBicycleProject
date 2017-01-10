@@ -5,7 +5,6 @@ import { expect } from "chai";
 import { sortRacks } from "../client/app/actions/utility.js";
 
 
-
 const racks = [
   {
     "id": 70,
@@ -57,8 +56,25 @@ const racks = [
   }
 ];
 
+
 describe("Rack sorting utility function", () => {
-  it("Should exist", () => {
-    expect(sortRacks).to.exist();
+  let sortRacksFunc = sortRacks;
+
+  it("Should exist as a function", () => {
+    expect(sortRacksFunc).to.be.an('function');
   })
+
+  it("Should return correctly ordered results", () => {
+    let sortedRacks = sortRacksFunc(racks);
+
+    let rack0 = sortedRacks[0];
+    let rack1 = sortedRacks[1];
+    let rack2 = sortedRacks[2];
+    let rack3 = sortedRacks[3];
+
+    expect(rack0.theftProb < rack3.theftProb).to.equal(true);
+    expect(rack0.theftProb < rack2.theftProb).to.equal(true);
+    expect(rack0.theftProb < rack1.theftProb).to.equal(true);
+  })
+  
 })
