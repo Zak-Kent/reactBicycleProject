@@ -2,7 +2,7 @@
 
 import { expect } from "chai";
 
-import { sortRacks } from "../client/app/actions/utility.js";
+import { sortRacks, locationCheck } from "../client/app/actions/utility.js";
 
 
 const racks = [
@@ -77,4 +77,19 @@ describe("Rack sorting utility function", () => {
     expect(rack0.theftProb < rack1.theftProb).to.equal(true);
   })
   
+})
+
+describe("Location check utility function", () => {
+  let locationCheckFunc = locationCheck;
+
+  it("Should exist as a function", () => {
+    expect(locationCheckFunc).to.be.an('function');
+  })
+  it("Should work as expected with different locations", () => {
+    expect(locationCheckFunc(45.511900, -122.638973)).to.equal(true);
+    expect(locationCheckFunc(45.649831, -123.059892)).to.equal(false);
+    expect(locationCheckFunc(123.059892, -45.649831)).to.equal(false);
+    expect(locationCheckFunc(-45.649831, 122.45689)).to.equal(false);
+  })
+
 })

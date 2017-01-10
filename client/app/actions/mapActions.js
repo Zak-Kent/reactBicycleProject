@@ -1,11 +1,23 @@
 "use strict";
 
+import { locationCheck } from "./utility.js";
+
+
 export function userCenterAction() {
 
   return function(dispatch) {
     navigator.geolocation.getCurrentPosition((pos) => {
       const coords = pos.coords; 
 
+      // returns T/F if user is inside the usable bounds of data 
+      let insidePortland = locationCheck(coords.latitude, coords.longitude);
+
+      dispatch({
+        type: "INSIDE_PORTLAND",
+        payload: {
+          insidePortland: insidePortland
+        }
+      })
       dispatch({ 
         type: "GET_USER_LOCATION",
         payload: {

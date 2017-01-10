@@ -34,20 +34,21 @@ class App extends React.Component {
   }
 
   apiAction() {
+    // method for making api call, need to add different logic to API and then change 
+    // way the url is made. 
 
     let lat = this.props.center.lat;
-    let lng = this.props.center.lng; 
-
-
-    console.log("api call", lat, lng) 
+    let lng = this.props.center.lng;  
 
     let url =  `https://totalgood.org/bicycle/?dist=500&format=json&point=${lng},${lat}`
 
-    console.log(url)
     this.props.dispatch(racksApiCall(url))
   } 
 
   dragEnd() {
+    // method needs to be passed down to map component so it can fire and update store
+    // using ref to map object when map is dragged 
+    
     let lat = this.props.gmap.getCenter().lat();
     let lng = this.props.gmap.getCenter().lng();
 
@@ -56,8 +57,6 @@ class App extends React.Component {
   }
 
   render () {
-    // console.log("value of redux store inside app render", this.props)
-
     return ( 
       <div>
         <p>Hello from React!</p>

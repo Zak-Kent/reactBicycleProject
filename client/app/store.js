@@ -15,7 +15,8 @@ const initialState = {
       bikeRacks: [],
       mapMoved: false,
       movedCenter: {},
-      gMapObj: null
+      gMapObj: null, 
+      insidePortland: false
     }
 
 export const reducer = (state=initialState, action) => {
@@ -24,8 +25,16 @@ export const reducer = (state=initialState, action) => {
     case "RECEIVE_RACKS": {
       return {...state, bikeRacks: action.payload}
     }
+    case "INSIDE_PORTLAND": {
+      return {...state, insidePortland: action.payload.insidePortland}
+    }
     case "GET_USER_LOCATION": {
-      return {...state, userCenter: action.payload.center}
+      // only updates the default starting center of map if user is in Portland
+      if (state.insidePortland) {
+        return {...state, userCenter: action.payload.center}
+      } else {
+        return {state}
+      }
     }
     case "CHANGE_MAP_CENTER": {
       return {...state, userCenter: action.payload.center, mapMoved: true}
