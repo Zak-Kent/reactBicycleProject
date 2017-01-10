@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Grid, Row, Col } from 'react-bootstrap';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
 
 import { getMapRef } from '../actions/mapActions.js';

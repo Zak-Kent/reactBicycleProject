@@ -1,16 +1,18 @@
 "use strict";
 
 import React from 'react';
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 
-function HttpButton(props) {
+export function HttpButton(props) {
   return (
-    <button onClick={() => props.onClick()}>API call bicycles</button>
+  	<ButtonGroup vertical block>
+    	<Button bsStyle="danger" onClick={() => props.onClick()}>API call bicycles</Button>
+    </ButtonGroup>
   );
 }
 
 
-export { HttpButton };
 
 
 

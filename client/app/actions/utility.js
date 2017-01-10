@@ -42,8 +42,6 @@ export function sortRacks(rackArray) {
   return sortedOutput;
 }
 
-// ************************** need to add location check functionality to app with a update in the store 
-
 export function locationCheck(lat, lng) {
     // min/max values found using valid data points from DB 
     let xMin = 122.472241;

@@ -8,6 +8,7 @@ import store from "./store.js";
 
 import { HttpButton } from "./components/buttons.jsx";
 import Map from "./components/gMap.jsx";
+import { MyNavBar } from "./components/navbar.jsx";
 
 import { racksApiCall } from "./actions/apiActions.js";
 import { userCenterAction, getMapCenter, mapDragAction } from "./actions/mapActions.js";
@@ -48,7 +49,7 @@ class App extends React.Component {
   dragEnd() {
     // method needs to be passed down to map component so it can fire and update store
     // using ref to map object when map is dragged 
-    
+
     let lat = this.props.gmap.getCenter().lat();
     let lng = this.props.gmap.getCenter().lng();
 
@@ -59,8 +60,8 @@ class App extends React.Component {
   render () {
     return ( 
       <div>
-        <p>Hello from React!</p>
-        <div style={{width:"500px", height:"500px", background:"red"}}>
+        <MyNavBar /> 
+        <div style={{width:"90%", height:"90%", background:"red", margin: "auto"}}>
           <Map center={this.props.center} markers={this.props.bikeRacks} dragEnd={() => this.dragEnd()} />
           <HttpButton onClick={() => this.apiAction()} />
         </div>
