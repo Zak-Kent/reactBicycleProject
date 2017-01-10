@@ -18,7 +18,7 @@ const initialState = {
       gMapObj: null
     }
 
-const reducer = (state=initialState, action) => {
+export const reducer = (state=initialState, action) => {
   
   switch (action.type) {
     case "RECEIVE_RACKS": {
