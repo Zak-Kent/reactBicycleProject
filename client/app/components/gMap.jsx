@@ -1,11 +1,12 @@
 "use strict";
 
 import React, { Component } from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
 
 import { getMapRef } from '../actions/mapActions.js';
-import store from "../store.js";
+import { sortRacks } from '../actions/utility.js';
+import store from '../store.js';
 
 @connect((store) => {
   return {
@@ -17,13 +18,18 @@ class Map extends Component {
   render() {
     const mapContainer = <div style={{height:'100%', width:'100%'}}></div>
 
-    const markers = this.props.markers.map((rack, idx) => {
+    // sort markers and assign different colored icons based on realtive theft score 
+    let sortedMarkers = sortRacks(this.props.markers);
+
+    // map through sorted marker array and make needed marker components 
+    const markers = sortedMarkers.map((rack, idx) => {
 
       const marker = {
         position: {
-          lat: rack.geom.coordinates[1], 
-          lng: rack.geom.coordinates[0]
-        }
+          lat: rack.lat, 
+          lng: rack.lng
+        }, 
+        icon: rack.icon
       }
 
       return <Marker key={rack.id} {...marker} /> 
