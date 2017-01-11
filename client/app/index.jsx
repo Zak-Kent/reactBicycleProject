@@ -8,6 +8,7 @@ import store from "./store.js";
 
 import { HttpButton } from "./components/buttons.jsx";
 import Map from "./components/gMap.jsx";
+import { MyNavBar } from "./components/navbar.jsx";
 
 import { racksApiCall } from "./actions/apiActions.js";
 import { userCenterAction, getMapCenter, mapDragAction } from "./actions/mapActions.js";
@@ -34,20 +35,23 @@ class App extends React.Component {
   }
 
   apiAction() {
+    // method for making api call, need to add different logic to API and then change 
+    // way the url is made. 
 
     let lat = this.props.center.lat;
-    let lng = this.props.center.lng; 
+    let lng = this.props.center.lng;  
 
+    let url =  `https://totalgood.org/bicycle/sorted/?format=json&point=${lng},${lat}`
 
-    console.log("api call", lat, lng) 
+    console.log("URL being called", url)
 
-    let url =  `https://totalgood.org/bicycle/?dist=500&format=json&point=${lng},${lat}`
-
-    console.log(url)
     this.props.dispatch(racksApiCall(url))
   } 
 
   dragEnd() {
+    // method needs to be passed down to map component so it can fire and update store
+    // using ref to map object when map is dragged 
+
     let lat = this.props.gmap.getCenter().lat();
     let lng = this.props.gmap.getCenter().lng();
 
@@ -56,14 +60,12 @@ class App extends React.Component {
   }
 
   render () {
-    // console.log("value of redux store inside app render", this.props)
-
     return ( 
-      <div>
-        <p>Hello from React!</p>
-        <div style={{width:"500px", height:"500px", background:"red"}}>
+      <div style={{background:"black"}}>
+        <MyNavBar /> 
+        <div style={{width:"90%", height:"90%", margin: "auto", padding: "0px 0px 60px 0px"}}>
           <Map center={this.props.center} markers={this.props.bikeRacks} dragEnd={() => this.dragEnd()} />
-          <HttpButton onClick={() => this.apiAction()} />
+          <HttpButton onClick={() => this.apiAction()} mapMoved={this.props.mapMoved}/>
         </div>
       </div>
     );
