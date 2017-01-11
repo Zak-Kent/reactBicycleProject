@@ -41,7 +41,9 @@ class App extends React.Component {
     let lat = this.props.center.lat;
     let lng = this.props.center.lng;  
 
-    let url =  `https://totalgood.org/bicycle/?dist=500&format=json&point=${lng},${lat}`
+    let url =  `https://totalgood.org/bicycle/sorted/?format=json&point=${lng},${lat}`
+
+    console.log("URL being called", url)
 
     this.props.dispatch(racksApiCall(url))
   } 
