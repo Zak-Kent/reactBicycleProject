@@ -13,6 +13,7 @@ import { MyNavBar } from "./components/navbar.jsx";
 import { racksApiCall } from "./actions/apiActions.js";
 import { userCenterAction, getMapCenter, mapDragAction } from "./actions/mapActions.js";
 
+
 // used by redux to connect store to a component 
 @connect((store) => {
   return {
@@ -28,6 +29,8 @@ class App extends React.Component {
   componentWillMount() {
     console.log("componentWillMount")
 
+    // callServer()
+
     if(navigator.geolocation) {
       // action gets user location from navigator and updates store 
       this.props.dispatch(userCenterAction())
@@ -41,9 +44,7 @@ class App extends React.Component {
     let lat = this.props.center.lat;
     let lng = this.props.center.lng;  
 
-    let url =  `https://totalgood.org/bicycle/sorted/?format=json&point=${lng},${lat}`
-
-    console.log("URL being called", url)
+    let url =  `/proxy?url=https://totalgood.org/bicycle/sorted/?format=json&point=${lng},${lat}`
 
     this.props.dispatch(racksApiCall(url))
   } 

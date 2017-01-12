@@ -1,5 +1,7 @@
 "use strict";
 
+// import { fetchJsonp } from "fetch-jsonp";
+
 export function racksApiCall(url) {
   // calls api using provided url and thunk 
 
@@ -10,8 +12,10 @@ export function racksApiCall(url) {
           .then((res) => {
             // need to pass data stream from fetch through JSON() to get correct format 
             return res.json()
+
           })
             .then((jsonRes) => {
+              console.log("json response in racksApiCall action:", jsonRes.results)
               dispatch({type: "RECEIVE_RACKS", payload: jsonRes.results})
             })
             .catch((err) => {
@@ -19,5 +23,4 @@ export function racksApiCall(url) {
             })
   }
 }
-
 
