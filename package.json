@@ -31,7 +31,8 @@
     "redux-promise-middleware": "^4.2.0",
     "redux-thunk": "^2.1.0",
     "request": "^2.79.0",
-    "webpack": "^1.14.0"
+    "webpack": "^1.14.0",
+    "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

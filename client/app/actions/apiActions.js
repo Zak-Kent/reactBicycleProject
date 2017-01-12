@@ -1,5 +1,8 @@
 "use strict";
 
+// import 'whatwg-fetch';
+import 'fetch-everywhere'
+
 // import { fetchJsonp } from "fetch-jsonp";
 
 export function racksApiCall(url) {
