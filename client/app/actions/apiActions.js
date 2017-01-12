@@ -1,7 +1,7 @@
 "use strict";
 
-// import 'whatwg-fetch';
-import 'fetch-everywhere'
+import 'whatwg-fetch';
+// import 'fetch-everywhere'
 
 // import { fetchJsonp } from "fetch-jsonp";
 
