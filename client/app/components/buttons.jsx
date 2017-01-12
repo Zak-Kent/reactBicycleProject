@@ -15,8 +15,9 @@ export function HttpButton(props) {
 
   return (
     <ButtonGroup vertical block>
-      <Button bsStyle="danger" onClick={() => props.onClick()}>{buttonText}</Button>
+      <Button bsStyle="danger" style={{cursor:'pointer'}} onClick={() => props.onClick()}>{buttonText}</Button>
     </ButtonGroup>
+    // <button  onClick={() => props.onClick()}>{buttonText}</button>
   );
 }
 
