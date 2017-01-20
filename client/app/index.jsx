@@ -29,8 +29,6 @@ class App extends React.Component {
   componentWillMount() {
     console.log("componentWillMount")
 
-    // callServer()
-
     if(navigator.geolocation) {
       // action gets user location from navigator and updates store 
       this.props.dispatch(userCenterAction())
@@ -38,8 +36,6 @@ class App extends React.Component {
   }
 
   apiAction() {
-    // method for making api call, need to add different logic to API and then change 
-    // way the url is made. 
 
     let lat = this.props.center.lat;
     let lng = this.props.center.lng;  

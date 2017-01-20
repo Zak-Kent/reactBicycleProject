@@ -5,16 +5,24 @@ import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
 
-import { getMapRef } from '../actions/mapActions.js';
+import { getMapRef, calcNewMapBounds } from '../actions/mapActions.js';
 import { sortRacks } from '../actions/utility.js';
 import store from '../store.js';
 
 @connect((store) => {
   return {
-    gmap: store.gMapObj
+    gmap: store.gMapObj,
+    bikeRacks: store.bikeRacks
   }
 })
 class Map extends Component {
+
+  componentDidMount () {
+    console.log("inside map componentDidMount !!!!!!!!!!!!!!!!!!!!!!")
+    // fit maps bounds to location of markers 
+    calcNewMapBounds(this.props.bikeRacks, this.props.gmap)
+
+  }
 
   render() {
     const mapContainer = <div style={{height:'100%', width:'100%'}}></div>
