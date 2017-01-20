@@ -16,7 +16,13 @@ const initialState = {
       mapMoved: false,
       movedCenter: {},
       gMapObj: null, 
-      insidePortland: false
+      insidePortland: false,
+      centerMarker: {
+        id: 0, 
+        lat: 45.521,
+        lng: -122.673,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        }
     }
 
 export const reducer = (state=initialState, action) => {
@@ -47,7 +53,7 @@ export const reducer = (state=initialState, action) => {
 
 
     case "CHANGE_MAP_CENTER": {
-      return {...state, userCenter: action.payload.center, mapMoved: true}
+      return {...state, userCenter: action.payload.center, mapMoved: true, centerMarker: action.payload.centerMarker }
     }
     case "GET_MAP_REF": {
       return {...state, gMapObj: action.payload}

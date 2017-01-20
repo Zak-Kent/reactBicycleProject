@@ -11,24 +11,19 @@ import store from '../store.js';
 
 @connect((store) => {
   return {
-    gmap: store.gMapObj,
-    bikeRacks: store.bikeRacks
+    gmap: store.gMapObj
   }
 })
 class Map extends Component {
-
-  // componentDidMount () {
-  //   console.log("inside map componentDidMount !!!!!!!!!!!!!!!!!!!!!!")
-  //   // fit maps bounds to location of markers 
-  //   calcNewMapBounds(this.props.bikeRacks, this.props.gmap)
-
-  // }
 
   render() {
     const mapContainer = <div style={{height:'100%', width:'100%'}}></div>
 
     // sort markers and assign different colored icons based on realtive theft score 
     let sortedMarkers = sortRacks(this.props.markers);
+
+    // push center marker into sorted array 
+    sortedMarkers.push(this.props.centerMarker)
 
     // map through sorted marker array and make needed marker components 
     const markers = sortedMarkers.map((rack, idx) => {

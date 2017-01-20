@@ -49,6 +49,12 @@ export function mapDragAction(coords) {
         center: {
           lat: coords.lat,
           lng: coords.lng
+        },
+        centerMarker: {
+        id: 0, 
+        lat: coords.lat,
+        lng: coords.lng,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
         }
       }
     }) 
@@ -57,16 +63,11 @@ export function mapDragAction(coords) {
 
 
 export function calcNewMapBounds(markers, gMapObj) {
-
-  console.log("inside calcNewMapBounds!")
-
-  if (markers.length === 0) {
-    console.log("map object is null inside calcNewMapBounds")
+  // use marker coords to zoom fit map to markers
+  
+  if (markers.length === 0 || gMapObj === null) {
     return
   }
-
-  
-  console.log("markers and map instance", markers, gMapObj)
 
   let copyMarkers = markers.slice();
   let latlngList = [];
@@ -91,25 +92,6 @@ export function calcNewMapBounds(markers, gMapObj) {
 
 }
 
-// var venues = this.props.venues;
-//     var latlngList = [];
-//     var bounds = new google.maps.LatLngBounds();
-//     var l = venues.length;
-//     var lL;
-//     var coordinate;
-
-//     while (l--) {
-//       coordinate = venues[l].coordinate;
-//       latlngList.push(new google.maps.LatLng (coordinate[1],coordinate[0]));
-//     }
-
-//     lL = latlngList.length;
-
-//     while (lL--) {
-//       bounds.extend(latlngList[lL]);
-//     }
-
-//     this.refs.map.fitBounds(bounds);
 
 
 
