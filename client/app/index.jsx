@@ -11,7 +11,7 @@ import Map from "./components/gMap.jsx";
 import { MyNavBar } from "./components/navbar.jsx";
 
 import { racksApiCall } from "./actions/apiActions.js";
-import { userCenterAction, getMapCenter, mapDragAction } from "./actions/mapActions.js";
+import { userCenterAction, getMapCenter, mapDragAction, calcNewMapBounds } from "./actions/mapActions.js";
 
 
 // used by redux to connect store to a component 
@@ -36,13 +36,16 @@ class App extends React.Component {
   }
 
   apiAction() {
-
+    // grab center of map, make API call with center coords, zoom fit map to markers
     let lat = this.props.center.lat;
     let lng = this.props.center.lng;  
 
     let url =  `/proxy?url=https://totalgood.org/bicycle/sorted/?format=json&point=${lng},${lat}`
 
-    this.props.dispatch(racksApiCall(url))
+    this.props.dispatch(racksApiCall(url)).then(() => {
+      // zoom fit map to new bounds of markers after they're returned
+      calcNewMapBounds(this.props.bikeRacks, this.props.gmap)
+    })
   } 
 
   dragEnd() {

@@ -17,12 +17,12 @@ import store from '../store.js';
 })
 class Map extends Component {
 
-  componentDidMount () {
-    console.log("inside map componentDidMount !!!!!!!!!!!!!!!!!!!!!!")
-    // fit maps bounds to location of markers 
-    calcNewMapBounds(this.props.bikeRacks, this.props.gmap)
+  // componentDidMount () {
+  //   console.log("inside map componentDidMount !!!!!!!!!!!!!!!!!!!!!!")
+  //   // fit maps bounds to location of markers 
+  //   calcNewMapBounds(this.props.bikeRacks, this.props.gmap)
 
-  }
+  // }
 
   render() {
     const mapContainer = <div style={{height:'100%', width:'100%'}}></div>

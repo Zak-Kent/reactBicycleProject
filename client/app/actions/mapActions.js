@@ -60,7 +60,7 @@ export function calcNewMapBounds(markers, gMapObj) {
 
   console.log("inside calcNewMapBounds!")
 
-  if (gMapObj === null) {
+  if (markers.length === 0) {
     console.log("map object is null inside calcNewMapBounds")
     return
   }
@@ -77,7 +77,7 @@ export function calcNewMapBounds(markers, gMapObj) {
   let coordinate;
 
   while(markIdx--) {
-    coordinate = copyMarkers[markIdx].coordinates
+    coordinate = copyMarkers[markIdx].geom.coordinates
     latlngList.push(new google.maps.LatLng (coordinate[1], coordinate[0]));
   }
 
@@ -88,8 +88,6 @@ export function calcNewMapBounds(markers, gMapObj) {
   }
 
   gMapObj.fitBounds(bounds);
-
-
 
 }
 
