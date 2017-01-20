@@ -61,6 +61,7 @@ export function calcNewMapBounds(markers, gMapObj) {
   console.log("inside calcNewMapBounds!")
 
   if (gMapObj === null) {
+    console.log("map object is null inside calcNewMapBounds")
     return
   }
 
