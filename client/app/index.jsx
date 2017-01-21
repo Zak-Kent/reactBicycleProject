@@ -45,6 +45,7 @@ class App extends React.Component {
 
     this.props.dispatch(racksApiCall(url)).then(() => {
       // zoom fit map to new bounds of markers after they're returned
+
       calcNewMapBounds(this.props.bikeRacks, this.props.gmap)
     })
   } 

@@ -24,7 +24,13 @@ export function userCenterAction() {
           center: {
             lat: coords.latitude, 
             lng: coords.longitude
-          }
+          }, 
+          centerMarker: {
+            id: 0, 
+            lat: coords.latitude,
+            lng: coords.longitude,
+            icon: './src/icons/bicycle-store.svg'
+            }
         }
       }) 
     })
@@ -54,7 +60,7 @@ export function mapDragAction(coords) {
         id: 0, 
         lat: coords.lat,
         lng: coords.lng,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        icon: './src/icons/bicycle-store.svg'
         }
       }
     }) 

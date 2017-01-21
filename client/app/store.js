@@ -21,7 +21,7 @@ const initialState = {
         id: 0, 
         lat: 45.521,
         lng: -122.673,
-        icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+        icon: './src/icons/bicycle-store.svg'
         }
     }
 
@@ -29,10 +29,10 @@ export const reducer = (state=initialState, action) => {
   
   switch (action.type) {
     case "RECEIVE_RACKS": {
-      return {...state, bikeRacks: action.payload}
+      return { ...state, bikeRacks: action.payload }
     }
     case "INSIDE_PORTLAND": {
-      return {...state, insidePortland: action.payload.insidePortland}
+      return { ...state, insidePortland: action.payload.insidePortland }
     }
 
 
@@ -43,7 +43,7 @@ export const reducer = (state=initialState, action) => {
     case "GET_USER_LOCATION": {
       // only updates the default starting center of map if user is in Portland
       if (state.insidePortland) {
-        return {...state, userCenter: action.payload.center}
+        return { ...state, userCenter: action.payload.center, centerMarker: action.payload.centerMarker }
       } else {
         return state
       }
@@ -53,10 +53,10 @@ export const reducer = (state=initialState, action) => {
 
 
     case "CHANGE_MAP_CENTER": {
-      return {...state, userCenter: action.payload.center, mapMoved: true, centerMarker: action.payload.centerMarker }
+      return { ...state, userCenter: action.payload.center, mapMoved: true, centerMarker: action.payload.centerMarker }
     }
     case "GET_MAP_REF": {
-      return {...state, gMapObj: action.payload}
+      return { ...state, gMapObj: action.payload }
     }
   }
   
@@ -66,3 +66,14 @@ export const reducer = (state=initialState, action) => {
 const middleware = applyMiddleware(thunk, logger())
 
 export default createStore(reducer, composeWithDevTools(middleware));
+
+
+
+
+
+
+
+
+
+
+
