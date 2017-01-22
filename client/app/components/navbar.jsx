@@ -7,17 +7,24 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Popover, OverlayTrigger } 
 
 const popoverBottom = (
   <Popover id="popover-positioned-scrolling-bottom" title="Project Description">
-    This repo is a collection of scripts that were used to clean data and build a spatially aware database 
-    that helps calculate the rate of theft at city owned bicycle racks in Portland. This database includes open 
-    source bicycle theft data from the City of Portland and .shp file data from Portland Atlas. The scripts are a 
-    combination of SQL using PostGIS functionality, and Python. Below is a brief description of the project.
+    This is a demo app that displays data about the relative safety of one bicycle rack vs. another in Portland. 
+    The data and a more detailed description of this project and the processes used to create it can be found by 
+    following the links to the Project Code. This was a learning project whose purpose was to provide cyclists in 
+    Portland with a convenient way to make informed decisions about where to park their bicycles based on open source
+    theft and GIS data provided by the city and Portland Atlas. The API for this project is being graciously 
+    hosted by TotalGood at https://totalgood.org/bicycle/.     
   </Popover>
 );
 
 const mapKeyPopoverBottom = (
   <Popover id="popover-positioned-scrolling-bottom" title="Map Key">
-    This repo is a collection of scripts that were used to clean data and build a spatially aware database 
-    that helps calculate the rate of theft at city owned bicycle racks in Portland
+    The bicycle icon represents the center of the search location. In its current state the app will return the 30 
+    closest bicycle racks to the search location and represent them using map markers. These markers are color coded by the 
+    relative safety of each rack to one another. Red being least safe out of the 30 racks, yellow being in the middle of the safety 
+    range, and green being the safest bicycle racks out of the racks shown. It is important to note that these colors are 
+    determined based on only the currently visible racks on the map. If you move the map to a nearby location and new
+    racks are found, the colors of the shown markers will be adjusted to reflect the new mix of safety scores from all 
+    visible racks. 
   </Popover>
 );
 
