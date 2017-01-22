@@ -58,22 +58,3 @@ export function locationCheck(lat, lng) {
       return false;    
     }
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

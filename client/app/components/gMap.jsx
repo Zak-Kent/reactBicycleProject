@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
 
-import { getMapRef } from '../actions/mapActions.js';
+import { getMapRef, calcNewMapBounds } from '../actions/mapActions.js';
 import { sortRacks } from '../actions/utility.js';
 import store from '../store.js';
 
@@ -21,6 +21,9 @@ class Map extends Component {
 
     // sort markers and assign different colored icons based on realtive theft score 
     let sortedMarkers = sortRacks(this.props.markers);
+
+    // push center marker into sorted array 
+    sortedMarkers.push(this.props.centerMarker)
 
     // map through sorted marker array and make needed marker components 
     const markers = sortedMarkers.map((rack, idx) => {

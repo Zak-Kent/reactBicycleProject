@@ -10,7 +10,6 @@ app.get('/proxy', function(req, res) {
 
   // strip off beginning part of query string from client to get correct URL
   var url = req.url.replace('/proxy?url=','')
-  console.log("url in proxy", url)
 
   fetch(url).then((resp) => resp.json()).then((out) => res.status(200).send(out));
 

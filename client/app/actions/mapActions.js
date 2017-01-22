@@ -24,7 +24,13 @@ export function userCenterAction() {
           center: {
             lat: coords.latitude, 
             lng: coords.longitude
-          }
+          }, 
+          centerMarker: {
+            id: 0, 
+            lat: coords.latitude,
+            lng: coords.longitude,
+            icon: './src/icons/bicycle-store.svg'
+            }
         }
       }) 
     })
@@ -49,8 +55,54 @@ export function mapDragAction(coords) {
         center: {
           lat: coords.lat,
           lng: coords.lng
+        },
+        centerMarker: {
+        id: 0, 
+        lat: coords.lat,
+        lng: coords.lng,
+        icon: './src/icons/bicycle-store.svg'
         }
       }
     }) 
   }
 }
+
+
+export function calcNewMapBounds(markers, gMapObj) {
+  // use marker coords to zoom fit map to markers
+  
+  if (markers.length === 0 || gMapObj === null) {
+    return
+  }
+
+  let copyMarkers = markers.slice();
+  let latlngList = [];
+  let bounds = new google.maps.LatLngBounds();
+
+  let markIdx = markers.length;
+  let boundIdx;
+  let coordinate;
+
+  while(markIdx--) {
+    coordinate = copyMarkers[markIdx].geom.coordinates
+    latlngList.push(new google.maps.LatLng (coordinate[1], coordinate[0]));
+  }
+
+  boundIdx = latlngList.length;
+
+  while(boundIdx--) {
+    bounds.extend(latlngList[boundIdx]);
+  }
+
+  gMapObj.fitBounds(bounds);
+
+}
+
+
+
+
+
+
+
+
+
