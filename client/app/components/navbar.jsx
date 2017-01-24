@@ -9,22 +9,24 @@ const popoverBottom = (
   <Popover id="popover-trigger-click-root-close" title="Project Description">
     This is a demo app that displays data about the relative safety of one bicycle rack vs. another in Portland. 
     The data and a more detailed description of this project and the processes used to create it can be found by 
-    following the links to the Project Code. This was a learning project whose purpose was to provide cyclists in 
-    Portland with a convenient way to make informed decisions about where to park their bicycles based on open source
-    theft and GIS data provided by the city and Portland Atlas. The API for this project is being graciously 
-    hosted by TotalGood at https://totalgood.org/bicycle/.     
+    following the links in the Project Code dropdown. This was a learning project with the purpose of providing cyclists in 
+    Portland with a convenient way to make informed decisions about where to park their bicycles. The data for this project
+    was gathered using open source theft and GIS data provided by the city of Portland and Portland Atlas. The API for 
+    this project is being graciously hosted by TotalGood at <a href="https://totalgood.org/bicycle/">https://totalgood.org/bicycle/</a>.     
   </Popover>
 );
 
 const mapKeyPopoverBottom = (
   <Popover id="popover-trigger-click-root-close" title="Map Key">
-    The bicycle icon represents the center of the search location. In its current state the app will return the 30 
-    closest bicycle racks to the search location and represent them using map markers. These markers are color coded by the 
-    relative safety of each rack to one another. Red being least safe out of the 30 racks, yellow being in the middle of the safety 
-    range, and green being the safest bicycle racks out of the racks shown. It is important to note that these colors are 
-    determined based on only the currently visible racks on the map. If you move the map to a nearby location and new
-    racks are found, the colors of the shown markers will be adjusted to reflect the new mix of safety scores from all 
-    visible racks. 
+    The bicycle icon represents the center of the search location and is moved automatically every time the map is repositioned. 
+    In its current state the app will return the 30 closest bicycle racks to the search location and represent them using 
+    markers. These markers are color coded by the relative safety of each rack to one another. 
+    <div><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"/>Safest</div> 
+    <div><img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"/>Middle of range</div> 
+    <div><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"/>Least safe</div> 
+    It is important to note that these colors are determined based on only the currently visible racks on the map. 
+    If you move the map to a nearby location and new racks are found, the colors of the shown markers will be 
+    adjusted to reflect the new mix of safety scores from all visible racks. 
   </Popover>
 );
 
