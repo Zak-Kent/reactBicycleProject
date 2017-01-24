@@ -28,9 +28,7 @@ import { userCenterAction, getMapCenter, mapDragAction, calcNewMapBounds } from 
 class App extends React.Component {
 
   componentWillMount() {
-    console.log("componentWillMount")
-
-    if(navigator.geolocation) {
+    if(navigator && navigator.geolocation) {
       // action gets user location from navigator and updates store 
       this.props.dispatch(userCenterAction())
     }
@@ -46,7 +44,23 @@ class App extends React.Component {
     this.props.dispatch(racksApiCall(url)).then(() => {
       // zoom fit map to new bounds of markers after they're returned
 
-      calcNewMapBounds(this.props.bikeRacks, this.props.gmap)
+      // reformatting center marker obj so it can be added to bike racks array for zoom fit 
+      let centerMarkerReformat = {
+                                  id: this.props.centerMarker.id, 
+                                  geom: {
+                                    coordinates: [
+                                      this.props.centerMarker.lng,
+                                      this.props.centerMarker.lat 
+                                    ]
+                                  }
+                                };
+
+      let racks = this.props.bikeRacks
+
+      let copyRacksAndCenter = racks.slice();
+      copyRacksAndCenter.push(centerMarkerReformat);
+
+      calcNewMapBounds(copyRacksAndCenter, this.props.gmap)
     })
   } 
 
