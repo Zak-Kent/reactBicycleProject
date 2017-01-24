@@ -65,10 +65,10 @@ class App extends React.Component {
     return ( 
       <div style={{background:"black"}}>
         <MyNavBar /> 
-        <div style={{width:"100%", height:"95%", margin: "auto", padding: "0px 0px 60px 0px"}}>
+        <div style={{width:"100%", height:"95%", margin: "auto"}}>
           <Map center={this.props.center} markers={this.props.bikeRacks} centerMarker={this.props.centerMarker} dragEnd={() => this.dragEnd()} />
-          <HttpButton onClick={() => this.apiAction()} mapMoved={this.props.mapMoved}/>
         </div>
+        <HttpButton onClick={() => this.apiAction()} mapMoved={this.props.mapMoved}/>
       </div>
     );
   }

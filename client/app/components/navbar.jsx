@@ -6,7 +6,7 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Popover, OverlayTrigger } 
 
 
 const popoverBottom = (
-  <Popover id="popover-positioned-scrolling-bottom" title="Project Description">
+  <Popover id="popover-trigger-click-root-close" title="Project Description">
     This is a demo app that displays data about the relative safety of one bicycle rack vs. another in Portland. 
     The data and a more detailed description of this project and the processes used to create it can be found by 
     following the links to the Project Code. This was a learning project whose purpose was to provide cyclists in 
@@ -17,7 +17,7 @@ const popoverBottom = (
 );
 
 const mapKeyPopoverBottom = (
-  <Popover id="popover-positioned-scrolling-bottom" title="Map Key">
+  <Popover id="popover-trigger-click-root-close" title="Map Key">
     The bicycle icon represents the center of the search location. In its current state the app will return the 30 
     closest bicycle racks to the search location and represent them using map markers. These markers are color coded by the 
     relative safety of each rack to one another. Red being least safe out of the 30 racks, yellow being in the middle of the safety 
@@ -40,10 +40,10 @@ export function MyNavBar(props) {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          <OverlayTrigger container={this} trigger="click" placement="bottom" overlay={popoverBottom}>
+          <OverlayTrigger container={this} trigger="click" rootClose placement="bottom" overlay={popoverBottom}>
             <NavItem eventKey={1} href="#">About</NavItem>
           </OverlayTrigger>
-          <OverlayTrigger container={this} trigger="click" placement="bottom" overlay={mapKeyPopoverBottom}>
+          <OverlayTrigger container={this} trigger="click" rootClose placement="bottom" overlay={mapKeyPopoverBottom}>
             <NavItem eventKey={2} href='#'>Map Key</NavItem>
           </OverlayTrigger>
           <NavDropdown eventKey={3} title="Project Code" id="basic-nav-dropdown">
