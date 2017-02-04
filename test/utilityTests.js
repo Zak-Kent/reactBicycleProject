@@ -1,7 +1,6 @@
 "use strict";
 
 import { expect } from "chai";
-
 import { sortRacks, locationCheck } from "../client/app/actions/utility.js";
 
 

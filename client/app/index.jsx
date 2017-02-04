@@ -42,7 +42,6 @@ class App extends React.Component {
     let url =  `/proxy?url=https://totalgood.org/bicycle/sorted/?format=json&point=${lng},${lat}`
 
     this.props.dispatch(racksApiCall(url)).then(() => {
-      // zoom fit map to new bounds of markers after they're returned
 
       // reformatting center marker obj so it can be added to bike racks array for zoom fit 
       let centerMarkerReformat = {
@@ -57,6 +56,8 @@ class App extends React.Component {
 
       let racks = this.props.bikeRacks
 
+      // make copy of returned bike racks and add search center marker to array
+      // needed to calc new map bounds 
       let copyRacksAndCenter = racks.slice();
       copyRacksAndCenter.push(centerMarkerReformat);
 

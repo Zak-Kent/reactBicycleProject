@@ -18,6 +18,7 @@ export function userCenterAction() {
           insidePortland: insidePortland
         }
       })
+
       dispatch({ 
         type: "GET_USER_LOCATION",
         payload: {
@@ -44,7 +45,6 @@ export function getMapRef(mapRef) {
   }
 }
 
-
 export function mapDragAction(coords) {
 
   return function(dispatch) {
@@ -66,7 +66,6 @@ export function mapDragAction(coords) {
     }) 
   }
 }
-
 
 export function calcNewMapBounds(markers, gMapObj) {
   // use marker coords to zoom fit map to markers

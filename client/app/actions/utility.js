@@ -6,9 +6,9 @@ export function sortRacks(rackArray) {
   let copyRackArray = rackArray.slice()
 
   const colorArray = [
-    'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-    'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
-    'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+    'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
+    'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+    'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
   ];
 
   copyRackArray.sort((a, b) => {

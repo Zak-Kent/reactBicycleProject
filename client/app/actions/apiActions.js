@@ -6,7 +6,6 @@ export function racksApiCall(url) {
   // calls api using provided url and thunk 
 
   return function(dispatch) {
-
     // nested return lets you chain aysnc actions with thunk middleware so you can call .then on 
     // the response of the fetch() after it dispatches its action to store. This is called in
     // index.jsx apiAction() method 
@@ -18,7 +17,6 @@ export function racksApiCall(url) {
               return res.json()
                 })
                   .then((jsonRes) => {
-                    console.log("json response in racksApiCall action:", jsonRes.results)
                     dispatch({type: "RECEIVE_RACKS", payload: jsonRes.results})
                   })
                   .catch((err) => {

@@ -21,9 +21,9 @@ const mapKeyPopoverBottom = (
     The bicycle icon represents the center of the search location and is moved automatically every time the map is repositioned. 
     In its current state the app will return the 30 closest bicycle racks to the search location and represent them using 
     markers. These markers are color coded by the relative safety of each rack to one another. 
-    <div><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"/>Safest</div> 
-    <div><img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"/>Middle of range</div> 
-    <div><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"/>Least safe</div> 
+    <div><img src="https://maps.google.com/mapfiles/ms/icons/green-dot.png"/>Safest</div> 
+    <div><img src="https://maps.google.com/mapfiles/ms/icons/yellow-dot.png"/>Middle of range</div> 
+    <div><img src="https://maps.google.com/mapfiles/ms/icons/red-dot.png"/>Least safe</div> 
     It is important to note that these colors are determined based on only the currently visible racks on the map. 
     If you move the map to a nearby location and new racks are found, the colors of the shown markers will be 
     adjusted to reflect the new mix of safety scores from all visible racks. 
